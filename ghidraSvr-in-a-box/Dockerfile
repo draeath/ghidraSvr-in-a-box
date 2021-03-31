@@ -1,4 +1,12 @@
 FROM docker.io/library/debian:buster
+LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
+LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
+LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
+LABEL org.opencontainers.image.version="9.2.2_PUBLIC_20201229"
+LABEL org.opencontainers.image.revision="cfaf865567f69194c24405660d7bdf4354e4dc38"
+LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
+LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
+LABEL org.opencontainers.image.licenses="Apache-2.0"
 
 ARG CORRETTO_URL=https://corretto.aws/downloads/resources/11.0.10.9.1/java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb
 ARG CORRETTO_FILE=java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb
