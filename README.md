@@ -32,7 +32,7 @@ Running is where it gets a bit more complicated.
 3. You need to expose TCP ports `13100`, `13101,` and `13102` - if these can be changed, I am not aware of it. Here's a set of arguments:
   - `-p 0.0.0.0:13100:13100 -p 0.0.0.0:13101:13101 -p 0.0.0.0:13102:13102`
 4. Example full command to launch the container, assuming image `localhost/ghidra:latest` and data in `/opt/ghidra`:
-  - `podman container run -p 0.0.0.0:13100:13100 -p 0.0.0.0:13101:13101 -p 0.0.0.0:13102:13102 -v "/opt/ghidra:/mnt/ghidra:rw" --rm --detach localhost/ghidra:latest`
+  - `podman container run -p 0.0.0.0:13100:13100/tcp -p 0.0.0.0:13101:13101/tcp -p 0.0.0.0:13102:13102/tcp -v "/opt/ghidra:/mnt/ghidra:rw" --rm --detach localhost/ghidra:latest`
 5. You do not need to take special care to save the STDOUT/STDERR, as logging is written into the `repositories` subdirectory of the mount.
 6. You do not need to keep the container around after stopping (hence `--rm` in the example) - all persistent state is in the mount.
 7. If this is a first-run, you must add at least one user. This must be done with the container up and running, using the `svrAdmin` tool. The start of the container STDOUT should contain a link to a versions-specific document, but as a quickstart the following will do. It will interactively prompt for a password. You should log in via ghidra within 24 hours to change the password or the user will be purged. Currently, ghidra allows you to specify the same password as set here.
