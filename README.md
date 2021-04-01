@@ -2,7 +2,7 @@
 
 ## ... a containerized [ghidra](https://ghidra-sre.org) server!
 
-This container should work with both Docker and Podman. Other engines, proceed at you're own risk.
+This container should work with both Docker and Podman. Other engines, proceed at your own risk.
 
 ### Building
 Building is pretty simple. Just build with a tag! If you want to elect a different ghidra or [corretto](https://aws.amazon.com/corretto/), the following `--build-arg` parameters are available (with defaults listed so you can see the formatting):
