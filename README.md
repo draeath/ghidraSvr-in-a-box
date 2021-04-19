@@ -5,15 +5,8 @@
 This container should work with both Docker and Podman. Other engines, proceed at you're own risk.
 
 ### Building
-Building is pretty simple. Just build with a tag! If you want to elect a different ghidra or [corretto](https://aws.amazon.com/corretto/), the following `--build-arg` parameters are available (with defaults listed so you can see the formatting):
+Building is pretty simple. Just build with a tag! If you want to elect a different ghidra version, the following `--build-arg` parameters are available (with defaults listed so you can see the formatting):
 
-- Corretto (releases for Java 11 are found [here](https://github.com/corretto/corretto-11/releases) - note that ghidra requires Java 11 at this time)
-  - `CORRETTO_URL`
-    - `https://corretto.aws/downloads/resources/11.0.10.9.1/java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb`
-  - `CORRETTO_FILE`
-    - `java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb`
-  - `CORRETTO_MD5`
-    - `6e5a33117ef8cb771a7ef48b6fe97fc2`
 - ghidra (URL to releases changes with every release, visit the website and find the 'releases' link)
   - `GHIDRASRV_IN_A_BOX_VERSION`
     - `9.2.2_PUBLIC_20201229`

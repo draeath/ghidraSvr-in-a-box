@@ -8,10 +8,6 @@ LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 
-ARG CORRETTO_URL=https://corretto.aws/downloads/resources/11.0.10.9.1/java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb
-ARG CORRETTO_FILE=java-11-amazon-corretto-jdk_11.0.10.9-1_amd64.deb
-ARG CORRETTO_MD5=6e5a33117ef8cb771a7ef48b6fe97fc2
-
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
 ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-9.2.2_PUBLIC_20201229}
@@ -22,15 +18,7 @@ RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive 
 RUN apt-get update &&\
     apt-get install -y apt-utils &&\
     apt-get dist-upgrade -y &&\
-    apt-get install -y --no-install-recommends coreutils wget ca-certificates unzip
-
-WORKDIR /root
-
-RUN wget --no-verbose -O "${CORRETTO_FILE}" "${CORRETTO_URL}" &&\
-    echo "${CORRETTO_MD5}  ${CORRETTO_FILE}" | tee "${CORRETTO_FILE}.md5" &&\
-    md5sum -c "${CORRETTO_FILE}.md5" &&\
-    apt-get install -y "./${CORRETTO_FILE}" &&\
-    rm "${CORRETTO_FILE}"
+    apt-get install -y --no-install-recommends coreutils wget ca-certificates unzip openjdk-11-jdk-headless
 
 WORKDIR /ghidra
 
