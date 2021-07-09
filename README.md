@@ -9,18 +9,18 @@ Building is pretty simple. Just build with a tag! If you want to elect a differe
 
 - ghidra (URL to releases changes with every release, visit the website and find the 'releases' link)
   - `GHIDRASRV_IN_A_BOX_VERSION`
-    - `9.2.4_PUBLIC_20210427`
+    - `10.0.1_PUBLIC_20210708`
   - `GHIDRASRV_IN_A_BOX_SHA256`
-    - `c1f18cdb12e2e1c0313e7becf7f0387226937ac67ad6c6e5056fa889229f969a`
+    - `9b68398fcc4c2254a3f8ff231c4e8b2ac75cc8105f819548c7eed3997f8c5a5d`
 
-Note if the NSA changes their naming conventions this will break in all sorts of fun ways and need some changes to the Dockerfile.
+Note if the NSA changes their naming conventions this will break in all sorts of fun ways and need some changes to the Dockerfile. In fact, the release process changed between 9.x and 10.x and we now use github release downloads. If you want a version earlier than 10.0.0, you do so at your own risk. Well, everything you do with this is at your own risk!
 
 ### Running
 Running is where it gets a bit more complicated.
 
 1. You need to create a directory to house the `server.conf` and `repositories` subdirectory. You do not need to create the `repositories` subdirectory itself. You will need to mount this `rw` to `/mnt/ghidra` inside the container. Assuming `/opt/ghidra` on the host, the following argument is a good suggestion:
   - `-v "/opt/ghidra:/mnt/ghidra:rw"`
-2. You need to populate `server.conf` in this directory. You may use [this](server.conf) to get you started (valid for ghidra 9.2.2, probably fine for subsequent 9.2.x - and indeed ghidra 10.0 didn't touch the file).
+2. You need to populate `server.conf` in this directory. You may use [this](server.conf) to get you started (valid for ghidra 9.2.2, but seems fine for subsequent versions up to and including 10.0.1).
   - You MUST edit `wrapper.app.parameter.3=-ip SET_ME_TO_YOUR_FQDN` with your FQDN. You should also take care your PTR matches your forward record as ghidra will insist on using this in client project configurations. It doesn't have to *match* but it must point to a record that in turn points back to this same server.
 3. You need to expose TCP ports `13100`, `13101,` and `13102` - if these can be changed, I am not aware of it. Here's a set of arguments:
   - `-p 0.0.0.0:13100:13100 -p 0.0.0.0:13101:13101 -p 0.0.0.0:13102:13102`

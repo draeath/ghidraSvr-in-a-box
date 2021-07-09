@@ -2,16 +2,18 @@ FROM docker.io/library/debian:buster
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="9.2.4_PUBLIC_20210427"
-LABEL org.opencontainers.image.revision="fbc8a6fb05d3a4ee9df19ed2dc5cdb98e4a402d9"
+LABEL org.opencontainers.image.version="10.0.1_PUBLIC_20210708"
+LABEL org.opencontainers.image.revision="3c1e51d0c0036c1b4c1d6f6a8e48f4a49c774b97"
 LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 
+ARG GHIDRASRV_IN_A_BOX_SHORTVERSION
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
-ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-9.2.4_PUBLIC_20210427}
-ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-c1f18cdb12e2e1c0313e7becf7f0387226937ac67ad6c6e5056fa889229f969a}
+ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.0.1}
+ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.0.1_PUBLIC_20210708}
+ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-9b68398fcc4c2254a3f8ff231c4e8b2ac75cc8105f819548c7eed3997f8c5a5d}
 
 RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive debconf-communicate
 
@@ -22,7 +24,7 @@ RUN apt-get update &&\
 
 WORKDIR /ghidra
 
-RUN wget --no-verbose -O "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" "https://ghidra-sre.org/ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" &&\
+RUN wget --no-verbose -O "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${GHIDRASRV_IN_A_BOX_SHORTVERSION}_build/ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" &&\
     echo "${GHIDRASRV_IN_A_BOX_SHA256}  ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" | tee "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip.sha256" &&\
     sha256sum -c "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip.sha256" &&\
     rm "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip.sha256" &&\
