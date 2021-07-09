@@ -2,16 +2,16 @@ FROM docker.io/library/debian:buster
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="9.2.3_PUBLIC_20210325"
-LABEL org.opencontainers.image.revision="9880b3dcef7b1c2441083a964ba42209cb94c52d"
+LABEL org.opencontainers.image.version="9.2.4_PUBLIC_20210427"
+LABEL org.opencontainers.image.revision="fbc8a6fb05d3a4ee9df19ed2dc5cdb98e4a402d9"
 LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
-ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-9.2.3_PUBLIC_20210325}
-ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-9019c78f8b38d68fd40908b040466974a370e26ba51b2aaeafc744171040f714}
+ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-9.2.4_PUBLIC_20210427}
+ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-c1f18cdb12e2e1c0313e7becf7f0387226937ac67ad6c6e5056fa889229f969a}
 
 RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive debconf-communicate
 
