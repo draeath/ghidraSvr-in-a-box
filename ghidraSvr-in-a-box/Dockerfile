@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:buster
+FROM docker.io/library/debian:bullseye
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
