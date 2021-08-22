@@ -9,9 +9,9 @@ Building is pretty simple. Just build with a tag! If you want to elect a differe
 
 - ghidra (URL to releases changes with every release, visit the website and find the 'releases' link)
   - `GHIDRASRV_IN_A_BOX_VERSION`
-    - `10.0.1_PUBLIC_20210708`
+    - `10.0.2_PUBLIC_20210708`
   - `GHIDRASRV_IN_A_BOX_SHA256`
-    - `9b68398fcc4c2254a3f8ff231c4e8b2ac75cc8105f819548c7eed3997f8c5a5d`
+    - `5534521ccb958b5cde04fc5c51bfa2918d475af49e94d372fa7c117cc9fe804b`
 
 Note if the NSA changes their naming conventions this will break in all sorts of fun ways and need some changes to the Dockerfile. In fact, the release process changed between 9.x and 10.x and we now use github release downloads. If you want a version earlier than 10.0.0, you do so at your own risk. Well, everything you do with this is at your own risk!
 
