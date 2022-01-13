@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:bullseye
+FROM registry.access.redhat.com/ubi8/ubi
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
@@ -17,10 +17,10 @@ ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-d4ee61ed669cec7e20748
 
 RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive debconf-communicate
 
-RUN apt-get update &&\
-    apt-get install -y apt-utils &&\
-    apt-get dist-upgrade -y &&\
-    apt-get install -y --no-install-recommends coreutils wget ca-certificates unzip openjdk-11-jdk-headless
+RUN dnf makecache &&\
+    dnf upgrade -y &&\
+    dnf install -y --allowerasing java-11-openjdk-headless wget unzip ca-certificates &&\
+    dnf clean all
 
 WORKDIR /ghidra
 
