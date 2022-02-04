@@ -20,6 +20,20 @@ RUN dnf makecache &&\
     dnf install -y --allowerasing java-11-openjdk-headless wget unzip ca-certificates &&\
     dnf clean all
 
+# While UBI8 apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
+#   https://github.com/krallin/tini#using-tini
+#   https://github.com/krallin/tini#existing-entrypoint
+# see the release page for supported architectures: https://github.com/krallin/tini/releases
+# TINI_TYPE can be 'tini' or 'tini-static'
+ARG TINI_VERSION=v0.19.0
+ARG TINI_ARCH=amd64
+ARG TINI_TYPE=tini
+ARG TINI_SHA256=93dcc18adc78c65a028a84799ecf8ad40c936fdfc5f2a57b1acda5a8117fa82c
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/${TINI_TYPE}-${TINI_ARCH} /tini
+RUN echo "${TINI_SHA256}  /tini" > /tini.sha256 &&\
+    sha256sum -c /tini.sha256 && unlink /tini.sha256
+RUN chmod 0755 /tini
+
 WORKDIR /ghidra
 
 RUN wget --no-verbose -O "ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${GHIDRASRV_IN_A_BOX_SHORTVERSION}_build/ghidra_${GHIDRASRV_IN_A_BOX_VERSION}.zip" &&\
@@ -42,4 +56,5 @@ EXPOSE 13102/tcp
 
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/ghidra/ghidra:/ghidra/ghidra/server"
 WORKDIR /ghidra/ghidra/server
+ENTRYPOINT ["/tini", "--"]
 CMD ["/ghidra/container-entrypoint.sh"]

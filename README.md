@@ -13,6 +13,8 @@ Building is pretty simple. Just build with a tag! If you want to elect a differe
   - `GHIDRASRV_IN_A_BOX_SHA256`
     - `ac96fbdde7f754e0eb9ed51db020e77208cdb12cf58c08657a2ab87cb2694940`
 
+Note: if you aren't running the container on amd64 be sure to override `TINI_ARCH` version appropriately. Review the Dockerfile as there are explanatory comments, including additonal args if you want to change the version or type (glibc, musl libc, or static). If you override any of these, you need to override `TINI_SHA256` as well.
+
 Note if the NSA changes their naming conventions this will break in all sorts of fun ways and need some changes to the Dockerfile. In fact, the release process changed between 9.x and 10.x and we now use github release downloads. If you want a version earlier than 10.0.0, you do so at your own risk. Well, everything you do with this is at your own risk!
 
 ### Running
