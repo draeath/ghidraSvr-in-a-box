@@ -15,8 +15,6 @@ ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.1.2}
 ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.1.2_PUBLIC_20220125}
 ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-ac96fbdde7f754e0eb9ed51db020e77208cdb12cf58c08657a2ab87cb2694940}
 
-RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive debconf-communicate
-
 RUN dnf makecache &&\
     dnf upgrade -y &&\
     dnf install -y --allowerasing java-11-openjdk-headless wget unzip ca-certificates &&\
