@@ -9,9 +9,9 @@ Building is pretty simple. Just build with a tag! If you want to elect a differe
 
 - ghidra (URL to releases changes with every release, visit the website and find the 'releases' link)
   - `GHIDRASRV_IN_A_BOX_VERSION`
-    - `10.1.3_PUBLIC_20220421`
+    - `10.1.4_PUBLIC_20220519`
   - `GHIDRASRV_IN_A_BOX_SHA256`
-    - `9c73b6657413686c0af85909c20581e764107add2a789038ebc6eca49dc4e812`
+    - `91556c77c7b00f376ca101a6026c0d079efbf24a35b09daaf80bda897318c1f1`
 
 Note: if you aren't running the container on amd64 be sure to override `TINI_ARCH` version appropriately. Review the Dockerfile as there are explanatory comments, including additonal args if you want to change the version or type (glibc, musl libc, or static). If you override any of these, you need to override `TINI_SHA256` as well.
 
