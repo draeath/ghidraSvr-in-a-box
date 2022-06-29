@@ -1,0 +1,6 @@
+[AmazonCorretto]
+name=Amazon Corretto
+baseurl=https://yum.corretto.aws/$basearch
+enabled=1
+gpgkey=/etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto
+gpgcheck=1

@@ -15,12 +15,17 @@ ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.1.4}
 ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.1.4_PUBLIC_20220519}
 ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-91556c77c7b00f376ca101a6026c0d079efbf24a35b09daaf80bda897318c1f1}
 
-RUN dnf makecache &&\
+# corretto.key from https://yum.corretto.aws/corretto.key 2022-06-29
+ADD corretto.key /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto
+ADD corretto.repo /etc/yum.repos.d/corretto.repo
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto &&\
+    dnf makecache &&\
     dnf upgrade -y &&\
-    dnf install -y --allowerasing java-11-openjdk-headless wget unzip ca-certificates &&\
+    dnf install -y --allowerasing wget unzip ca-certificates java-11-amazon-corretto-devel &&\
     dnf clean all
+ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
 
-# While UBI8 apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
+# While UBI apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
 #   https://github.com/krallin/tini#using-tini
 #   https://github.com/krallin/tini#existing-entrypoint
 # see the release page for supported architectures: https://github.com/krallin/tini/releases
