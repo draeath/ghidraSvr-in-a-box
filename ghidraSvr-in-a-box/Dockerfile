@@ -19,10 +19,8 @@ RUN dnf makecache &&\
     dnf upgrade -y &&\
     dnf install -y --allowerasing java-11-openjdk-headless wget unzip ca-certificates &&\
     dnf clean all
-# update this if the JRE is changed or the svrAdmin command will get angry
-ENV JAVA_HOME="/usr/lib/jvm/jre-11-openjdk"
 
-# While UBI apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
+# While UBI8 apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
 #   https://github.com/krallin/tini#using-tini
 #   https://github.com/krallin/tini#existing-entrypoint
 # see the release page for supported architectures: https://github.com/krallin/tini/releases
