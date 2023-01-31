@@ -2,8 +2,8 @@ FROM registry.access.redhat.com/ubi9/ubi
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="10.2_PUBLIC_20221101"
-LABEL org.opencontainers.image.revision="17884b878680e640dd5c30210736a1d062ae5ba2"
+LABEL org.opencontainers.image.version="10.2.2_PUBLIC_20221115"
+LABEL org.opencontainers.image.revision="9813cde2db1f31f92fed49a4dd8aa29b21d72581"
 LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
@@ -11,19 +11,19 @@ LABEL org.opencontainers.image.licenses="Apache-2.0"
 ARG GHIDRASRV_IN_A_BOX_SHORTVERSION
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
-ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.2}
-ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.2_PUBLIC_20221101}
-ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-a5163f50bd6ce725c4c8638f7505b64bb603ea6bfe3f7d9ed4e403236716f787}
+ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.2.2}
+ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.2.2_PUBLIC_20221115}
+ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-feb8a795696b406ad075e2c554c80c7ee7dd55f0952458f694ea1a918aa20ee3}
 
-# corretto.key from https://yum.corretto.aws/corretto.key 2022-06-29
+# corretto.key from https://yum.corretto.aws/corretto.key 2023-01-31
 ADD corretto.key /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto
 ADD corretto.repo /etc/yum.repos.d/corretto.repo
 RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto &&\
     dnf makecache &&\
     dnf upgrade -y &&\
-    dnf install -y --allowerasing wget unzip ca-certificates java-11-amazon-corretto-devel &&\
+    dnf install -y --allowerasing wget unzip ca-certificates java-17-amazon-corretto-devel &&\
     dnf clean all
-ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
+ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
 # While UBI apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
 #   https://github.com/krallin/tini#using-tini
