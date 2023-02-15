@@ -2,8 +2,8 @@ FROM registry.access.redhat.com/ubi9/ubi
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="10.2.2_PUBLIC_20221115"
-LABEL org.opencontainers.image.revision="9813cde2db1f31f92fed49a4dd8aa29b21d72581"
+LABEL org.opencontainers.image.version="10.2.3_PUBLIC_20230208"
+LABEL org.opencontainers.image.revision="4ed65cc0db1a4397ebb8f8d122fe216418ab0afc"
 LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.licenses="Apache-2.0"
 ARG GHIDRASRV_IN_A_BOX_SHORTVERSION
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
-ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.2.2}
-ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.2.2_PUBLIC_20221115}
-ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-feb8a795696b406ad075e2c554c80c7ee7dd55f0952458f694ea1a918aa20ee3}
+ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-10.2.3}
+ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-10.2.3_PUBLIC_20230208}
+ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-daf4d85ec1a8ca55bf766e97ec43a14b519cbd1060168e4ec45d429d23c31c38}
 
 # corretto.key from https://yum.corretto.aws/corretto.key 2023-01-31
 ADD corretto.key /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto
