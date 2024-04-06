@@ -9,9 +9,9 @@ Building is pretty simple. Just build with a tag! If you want to elect a differe
 
 - ghidra (URL to releases changes with every release, visit the website and find the 'releases' link)
   - `GHIDRASRV_IN_A_BOX_VERSION`
-    - `10.4_PUBLIC_20230928`
+    - `11.0.2_PUBLIC_20240326`
   - `GHIDRASRV_IN_A_BOX_SHA256`
-    - `6911d674798f145f8ea723fdd3eb67a8fae8c7be92e117bca081e6ef66acac19`
+    - `4f16ae3f288f8c01fd1872e8e55b25c79744e7b1e8a9383c5e576668ca7d1906`
 
 Note: if you aren't running the container on amd64 be sure to override `TINI_ARCH` version appropriately. Review the Dockerfile as there are explanatory comments, including additonal args if you want to change the version or type (glibc, musl libc, or static). If you override any of these, you need to override `TINI_SHA256` as well.
 
@@ -22,7 +22,7 @@ Running is where it gets a bit more complicated.
 
 1. You need to create a directory to house the `server.conf` and `repositories` subdirectory. You do not need to create the `repositories` subdirectory itself. You will need to mount this `rw` to `/mnt/ghidra` inside the container. Assuming `/opt/ghidra` on the host, the following argument is a good suggestion:
   - `-v "/opt/ghidra:/mnt/ghidra:rw"`
-2. You need to populate `server.conf` in this directory. You may use [this](server.conf) to get you started (valid for ghidra 9.2.2, but seems fine for subsequent versions up to and including 10.4).
+2. You need to populate `server.conf` in this directory. You may use [this](server.conf) to get you started (valid for ghidra 11.0.2, for other versions... figure it out.)
   - You MUST edit `wrapper.app.parameter.4=-ip SET_ME_TO_YOUR_FQDN` with your FQDN. You should also take care your PTR matches your forward record as ghidra will insist on using this in client project configurations. It doesn't have to *match* but it must point to a record that in turn points back to this same server.
 3. You need to expose TCP ports `13100`, `13101,` and `13102` - if these can be changed, I am not aware of it. Here's a set of arguments:
   - `-p 0.0.0.0:13100:13100 -p 0.0.0.0:13101:13101 -p 0.0.0.0:13102:13102`
