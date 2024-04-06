@@ -15,15 +15,10 @@ ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-11.0.2}
 ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-11.0.2_PUBLIC_20240326}
 ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-4f16ae3f288f8c01fd1872e8e55b25c79744e7b1e8a9383c5e576668ca7d1906}
 
-# corretto.key from https://yum.corretto.aws/corretto.key 2023-01-31
-ADD corretto.key /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto
-ADD corretto.repo /etc/yum.repos.d/corretto.repo
-RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-AWS-Corretto &&\
-    dnf makecache &&\
+RUN dnf makecache &&\
     dnf upgrade -y &&\
-    dnf install -y --allowerasing wget unzip ca-certificates java-17-amazon-corretto-devel &&\
+    dnf install -y --allowerasing wget unzip ca-certificates java-17-openjdk-headless &&\
     dnf clean all
-ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
 # While UBI apparently includes systemd support, I'm unsure how to make use of it. Add Tini and use it instead.
 #   https://github.com/krallin/tini#using-tini
