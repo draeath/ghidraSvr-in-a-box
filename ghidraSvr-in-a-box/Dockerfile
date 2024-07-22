@@ -1,12 +1,12 @@
 FROM registry.access.redhat.com/ubi9/ubi
-LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
-LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
+LABEL org.opencontainers.image.authors     "Paul Bransford <draeath@gmail.com>"
+LABEL org.opencontainers.image.title       "ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description "Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="11.1.2_PUBLIC_20240709"
-LABEL org.opencontainers.image.revision="68cad06ddfae2b92c03054357c67c32f2d0553a8"
-LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
-LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
-LABEL org.opencontainers.image.licenses="Apache-2.0"
+LABEL org.opencontainers.image.version     "11.1.2_PUBLIC_20240709"
+LABEL org.opencontainers.image.revision    "68cad06ddfae2b92c03054357c67c32f2d0553a8"
+LABEL org.opencontainers.image.source      "https://github.com/NationalSecurityAgency/ghidra"
+LABEL org.opencontainers.image.url         "https://github.com/draeath/ghidraSvr-in-a-box"
+LABEL org.opencontainers.image.licenses    "Apache-2.0"
 
 ARG GHIDRASRV_IN_A_BOX_SHORTVERSION
 ARG GHIDRASRV_IN_A_BOX_VERSION
