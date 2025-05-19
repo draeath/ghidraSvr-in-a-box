@@ -2,8 +2,8 @@ FROM registry.access.redhat.com/ubi9/ubi
 LABEL org.opencontainers.image.authors="Paul Bransford <draeath@gmail.com>"
 LABEL org.opencontainers.image.title="ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.description="Yet another ghidra server container implementation."
-LABEL org.opencontainers.image.version="11.1.2_PUBLIC_20240709"
-LABEL org.opencontainers.image.revision="68cad06ddfae2b92c03054357c67c32f2d0553a8"
+LABEL org.opencontainers.image.version="11.3.2_PUBLIC_20250415"
+LABEL org.opencontainers.image.revision="3a503048975ac134d9d4efecaa09f143bbc6b3b9"
 LABEL org.opencontainers.image.source="https://github.com/NationalSecurityAgency/ghidra"
 LABEL org.opencontainers.image.url="https://github.com/draeath/ghidraSvr-in-a-box"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.licenses="Apache-2.0"
 ARG GHIDRASRV_IN_A_BOX_SHORTVERSION
 ARG GHIDRASRV_IN_A_BOX_VERSION
 ARG GHIDRASRV_IN_A_BOX_SHA256
-ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-11.1.2}
-ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-11.1.2_PUBLIC_20240709}
-ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-219ec130b901645779948feeb7cc86f131dd2da6c36284cf538c3a7f3d44b588}
+ENV GHIDRASRV_IN_A_BOX_SHORTVERSION=${GHIDRASRV_IN_A_BOX_SHORTVERSION:-11.3.2}
+ENV GHIDRASRV_IN_A_BOX_VERSION=${GHIDRASRV_IN_A_BOX_VERSION:-11.3.2_PUBLIC_20250415}
+ENV GHIDRASRV_IN_A_BOX_SHA256=${GHIDRASRV_IN_A_BOX_SHA256:-99d45035bdcc3d6627e7b1232b7b379905a9fad76c772c920602e2b5d8b2dac2}
 
 RUN dnf makecache &&\
     dnf upgrade -y &&\
